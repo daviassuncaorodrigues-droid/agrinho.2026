@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AgroVision AI - Agricultura Inteligente</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--verde:#1f7a3d;
+--verde-escuro:#14532d;
+--verde-claro:#4ade80;
+--fundo:#f5f7f5;
+--branco:#ffffff;
+--texto:#1f2937;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--fundo);
+color:var(--texto);
+}
+
+/* MENU */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(20,83,45,.95);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+z-index:1000;
+}
+
+.logo{
+font-size:1.7rem;
+font-weight:700;
+color:white;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+nav a:hover{
+color:#9df6b4;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero-content{
+max-width:900px;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.2rem;
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:var(--verde);
+color:white;
+text-decoration:none;
+border-radius:50px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+background:var(--verde-claro);
+color:black;
+}
+
+section{
+padding:90px 8%;
+}
+
+.titulo{
+text-align:center;
+margin-bottom:50px;
+}
+
+.titulo h2{
+font-size:2.3rem;
+color:var(--verde-escuro);
+}
+
+/* DASHBOARD */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.valor{
+font-size:2.3rem;
+font-weight:700;
+color:var(--verde);
+margin-top:10px;
+}
+
+.barra{
+width:100%;
+height:18px;
+background:#ddd;
+border-radius:30px;
+overflow:hidden;
+margin-top:15px;
+}
+
+.nivel{
+height:100%;
+background:linear-gradient(90deg,#4ade80,#22c55e);
+}
+
+/* ALERTAS */
+
+.alertas{
+display:grid;
+gap:15px;
+}
+
+.alerta{
+padding:18px;
+border-radius:12px;
+font-weight:600;
+}
+
+.verde{
+background:#dcfce7;
+color:#166534;
+}
+
+.amarelo{
+background:#fef9c3;
+color:#854d0e;
+}
+
+.vermelho{
+background:#fee2e2;
+color:#991b1b;
+}
+
+/* PREVISÃO */
+
+.previsao{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+gap:15px;
+}
+
+.dia{
+background:white;
+padding:20px;
+text-align:center;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.dia h3{
+color:var(--verde);
+}
+
+/* ANALISE */
+
+.analisador{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:center;
+}
+
+select{
+padding:12px;
+width:250px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+padding:12px 25px;
+border:none;
+background:var(--verde);
+color:white;
+border-radius:10px;
+cursor:pointer;
+margin-left:10px;
+}
+
+button:hover{
+background:var(--verde-escuro);
+}
+
+#resultado{
+margin-top:25px;
+font-size:1.1rem;
+font-weight:600;
+}
+
+/* CALCULADORA */
+
+input{
+padding:12px;
+border-radius:10px;
+border:1px solid #ccc;
+width:250px;
+}
+
+#agua{
+margin-top:20px;
+font-weight:bold;
+font-size:1.2rem;
+color:var(--verde);
+}
+
+/* FOOTER */
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.5rem;
+}
+
+nav ul{
+display:none;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+
+<div class="logo">🌱 AgroVision AI</div>
+
+<ul>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#alertas">Alertas</a></li>
+<li><a href="#previsao">Previsão</a></li>
+<li><a href="#analise">Análise</a></li>
+</ul>
+
+</nav>
+
+<header class="hero">
+
+<div class="hero-content">
+
+<h1>Agricultura Inteligente para o Futuro</h1>
+
+<p>
+Acompanhe clima, chuva, umidade, recomendações agronômicas
+e tome decisões mais inteligentes para sua produção.
+</p>
+
+<a href="#dashboard" class="btn">
+Entrar no Dashboard
+</a>
+
+</div>
+
+</header>
+
+<section id="dashboard">
+
+<div class="titulo">
+<h2>Dashboard Climático</h2>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>🌧 Chance de Chuva</h3>
+<div class="valor">82%</div>
+<div class="barra">
+<div class="nivel" style="width:82%"></div>
+</div>
+</div>
+
+<div class="card">
+<h3>🌡 Temperatura</h3>
+<div class="valor">24°C</div>
+</div>
+
+<div class="card">
+<h3>💧 Umidade</h3>
+<div class="valor">69%</div>
+</div>
+
+<div class="card">
+<h3>🌱 Índice de Plantio</h3>
+<div class="valor">87%</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="alertas">
+
+<div class="titulo">
+<h2>Alertas Agrícolas</h2>
+</div>
+
+<div class="alertas">
+
+<div class="alerta verde">
+✅ Condições excelentes para plantio de milho.
+</div>
+
+<div class="alerta amarelo">
+⚠ Chuvas intensas previstas para os próximos 3 dias.
+</div>
+
+<div class="alerta vermelho">
+🚨 Atenção para excesso de água em áreas baixas.
+</div>
+
+</div>
+
+</section>
+
+<section id="previsao">
+
+<div class="titulo">
+<h2>Previsão para 7 Dias</h2>
+</div>
+
+<div class="previsao">
+
+<div class="dia"><h3>Seg</h3><p>80%</p></div>
+<div class="dia"><h3>Ter</h3><p>75%</p></div>
+<div class="dia"><h3>Qua</h3><p>60%</p></div>
+<div class="dia"><h3>Qui</h3><p>55%</p></div>
+<div class="dia"><h3>Sex</h3><p>90%</p></div>
+<div class="dia"><h3>Sáb</h3><p>72%</p></div>
+<div class="dia"><h3>Dom</h3><p>68%</p></div>
+
+</div>
+
+</section>
+
+<section id="analise">
+
+<div class="titulo">
+<h2>Análise de Culturas</h2>
+</div>
+
+<div class="analisador">
+
+<select id="cultura">
+<option>Milho</option>
+<option>Soja</option>
+<option>Feijão</option>
+<option>Café</option>
+</select>
+
+<button onclick="analisar()">
+Analisar
+</button>
+
+<div id="resultado">
+Selecione uma cultura para receber recomendações.
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="titulo">
+<h2>Calculadora de Irrigação</h2>
+</div>
+
+<div class="analisador">
+
+<input
+type="number"
+id="hectares"
+placeholder="Área em hectares">
+
+<button onclick="calcular()">
+Calcular
+</button>
+
+<div id="agua"></div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 AgroVision AI • Plataforma de Agricultura de Precisão
+</p>
+
+</footer>
+
+<script>
+
+const dados = {
+
+Milho:
+"🌽 Milho: excelente momento para plantio. Viabilidade estimada em 88%.",
+
+Soja:
+"🌱 Soja: umidade adequada e clima favorável. Viabilidade de 84%.",
+
+Feijão:
+"🫘 Feijão: solo em boas condições para germinação. Viabilidade de 81%.",
+
+Café:
+"☕ Café: período favorável para desenvolvimento inicial. Viabilidade de 91%."
+
+};
+
+function analisar(){
+
+let cultura =
+document.getElementById("cultura").value;
+
+document.getElementById("resultado").innerHTML =
+dados[cultura];
+
+}
+
+function calcular(){
+
+let hectares =
+Number(document.getElementById("hectares").value);
+
+let litros =
+hectares * 6000;
+
+document.getElementById("agua").innerHTML =
+"💧 Necessidade estimada: " +
+litros.toLocaleString('pt-BR') +
+" litros por dia.";
+
+}
+
+</script>
+
+</body>
+</html>
